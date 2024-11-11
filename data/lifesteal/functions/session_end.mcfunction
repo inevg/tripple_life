@@ -1,0 +1,1 @@
+tag @a remove first_death
