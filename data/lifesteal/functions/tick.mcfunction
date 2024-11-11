@@ -100,31 +100,48 @@ execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_health 1 
 
 #function lifesteal:linked/link_tick
 
+
+
+execute if score @p lives = 3 lives run team join Green
+execute if score @p lives = 2 lives run team join Yellow
+execute if score @p lives = 1 lives run team join Red
+execute if score @p lives = 0 lives run team join Dead
+
 #--------------------------------------------------------------------------------------------------------------------------------
 #execute if score @s ls_health matches ..0 run gamemode spectator @s
-execute as @a[scores={ls_death=1.., ls_health=0..},team=Green] run tag @p add green_to_yellow
-execute as @a[scores={ls_death=1.., ls_health=-2..},team=Green] run tag @p add green_to_yellow
-execute as @a[scores={ls_death=1.., ls_health=-4..},team=Green] run tag @p add green_to_yellow
-execute as @a[scores={ls_death=1.., ls_health=-6..},team=Green] run tag @p add green_to_yellow
-execute as @a[tag=green_to_yellow] run scoreboard players set @p ls_health 10
-execute as @a[tag=green_to_yellow] run team leave Green
-execute as @a[tag=green_to_yellow] run team join Yellow
-execute as @a[tag=green_to_yellow] run tag @p remove green_to_yellow
+execute as @a[scores={ls_death=1.., ls_health=0.., lives=3}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-2.., lives=3}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-4.., lives=3}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-6.., lives=3}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=0.., lives=2}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-2.., lives=2}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-4.., lives=2}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-6.., lives=2}] run scoreboard players set @p ls_health 10
+
 #--------------------------------------------------------------------------------------------------------------------------------
-execute as @a[scores={ls_death=1.., ls_health=0..},team=Yellow] run tag @p add yellow_to_red
-execute as @a[scores={ls_death=1.., ls_health=-2..},team=Yellow] run tag @p add yellow_to_red
-execute as @a[scores={ls_death=1.., ls_health=-4..},team=Yellow] run tag @p add yellow_to_red
-execute as @a[scores={ls_death=1.., ls_health=-6..},team=Yellow] run tag @p add yellow_to_red
-execute as @a[tag=yellow_to_red] run scoreboard players set @p ls_health 10
-execute as @a[tag=green_to_yellow] run team leave Yellow
-execute as @a[tag=yellow_to_red] run team join Red
-execute as @a[tag=yellow_to_red] run tag @p remove yellow_to_red
+execute as @a[scores={ls_death=1.., ls_health=0.., lives=2}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-2.., lives=2}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-4.., lives=2}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-6.., lives=2}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=0.., lives=1}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-2.., lives=1}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-4.., lives=1}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-6.., lives=1}] run scoreboard players set @p ls_health 10
+
 #--------------------------------------------------------------------------------------------------------------------------------
-execute as @a[scores={ls_death=1.., ls_health=0..},team=Red] run tag @p add dead
-execute as @a[scores={ls_death=1.., ls_health=-2..},team=Red] run tag @p add dead
-execute as @a[tag=dead] run gamemode spectator
-execute as @a[tag=green_to_yellow] run team leave Red
-execute as @a[tag=dead] run team join Dead
+execute as @a[scores={ls_death=1.., ls_health=0.., lives=1}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-2.., lives=1}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-4.., lives=1}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-6.., lives=1}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=0.., lives=0}] run tag @p add dead
+execute as @a[scores={ls_death=1.., ls_health=-2.., lives=0}] run tag @p add dead
+execute as @a[scores={ls_death=1.., ls_health=-4.., lives=0}] run tag @p add dead
+execute as @a[scores={ls_death=1.., ls_health=-6.., lives=0}] run tag @p add dead
+execute as @a[scores={ls_death=1.., ls_health=0.., lives=0}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-2.., lives=0}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-4.., lives=0}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-6.., lives=0}] run scoreboard players set @p ls_health 10
+
 execute as @a[tag=dead] run title @p title {"text":"You ran out of hearts!","bold":true,"color":"red"}
 execute as @a[tag=dead] run tag @p remove dead
 

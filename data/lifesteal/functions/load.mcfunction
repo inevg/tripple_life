@@ -14,6 +14,7 @@ scoreboard objectives add last_tick_heart_check dummy
 scoreboard objectives add ls_tick dummy
 
 scoreboard objectives add ls_global_settings dummy
+scoreboard objectives add lives dummy
 
 team add Green
 team modify Green color green
@@ -24,8 +25,7 @@ team modify Red color red
 team add Dead
 team modify Dead color gray
 
-team join Green @a
-
+scoreboard players set @a lives 3
 
 forceload add 0 0
 
@@ -33,6 +33,8 @@ gamerule keepInventory true
 
 scoreboard objectives add deathswap dummy
 #scoreboard objectives add gladiator dummy
+scoreboard objectives add gladiator dummy
+scoreboard objectives add gladiator_match dummy
 scoreboard objectives add gladiator_score dummy
 scoreboard objectives add mlg_score dummy
 scoreboard objectives add soul dummy
