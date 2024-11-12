@@ -1,4 +1,5 @@
 scoreboard objectives add ls_health dummy
+scoreboard players set @a ls_health 10
 scoreboard objectives add ls_lastHealth dummy
 
 #scoreboard objectives add ls_leave minecraft.custom:minecraft.leave_game

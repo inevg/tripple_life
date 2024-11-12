@@ -22,7 +22,6 @@ execute as @a[scores={ls_death=1..}, tag=first_death] run scoreboard players rem
 tellraw @a[scores={ls_death=1..}, tag=first_death] {"text":"You are the first person to be killed and you will be punished by losing 2 extra hearts","color":"red"}
 execute as @a[scores={ls_death=1..}, tag=first_death] run tag @a remove first_death
 
-execute as @a[scores={ls_death=1..},tag=!boogey_victim, tag=!first_death] run scoreboard players remove @s ls_health 4
 
 
 
@@ -98,24 +97,29 @@ execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_health 1 
 function lifesteal:linked/link_tick
 
 
-execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players set @p ls_health 10
 
-execute if score @p lives = 3 lives run team join Green
-execute if score @p lives = 2 lives run team join Yellow
-execute if score @p lives = 1 lives run team join Red
-execute if score @p lives = 0 lives run team join Dead
+execute as @a[scores={lives=3}] run team join Green
+execute as @a[scores={lives=2}] run team join Yellow
+execute as @a[scores={lives=1}] run team join Red
+execute as @a[scores={lives=0}] run team join Dead
+
+#execute if score @p lives = 3 lives run team join Green
+#execute if score @p lives = 2 lives run team join Yellow
+#execute if score @p lives = 1 lives run team join Red
+#execute if score @p lives = 0 lives run team join Dead
 
 #--------------------------------------------------------------------------------------------------------------------------------
 #execute if score @s ls_health matches ..0 run gamemode spectator @s
-#execute as @a[scores={ls_death=1.., ls_health=0.., lives=3}] run scoreboard players remove @p lives 1
-#execute as @a[scores={ls_death=1.., ls_health=-2.., lives=3}] run scoreboard players remove @p lives 1
-#execute as @a[scores={ls_death=1.., ls_health=-4.., lives=3}] run scoreboard players remove @p lives 1
-#execute as @a[scores={ls_death=1.., ls_health=-6.., lives=3}] run scoreboard players remove @p lives 1
-#execute as @a[scores={ls_death=1.., ls_health=0.., lives=2}] run scoreboard players set @p ls_health 10
-#execute as @a[scores={ls_death=1.., ls_health=-2.., lives=2}] run scoreboard players set @p ls_health 10
-#execute as @a[scores={ls_death=1.., ls_health=-4.., lives=2}] run scoreboard players set @p ls_health 10
-#execute as @a[scores={ls_death=1.., ls_health=-6.., lives=2}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=0}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-2}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-4}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=-6}] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1.., ls_health=0}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-2}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-4}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1.., ls_health=-6}] run scoreboard players set @p ls_health 10
 
 #--------------------------------------------------------------------------------------------------------------------------------
 #execute as @a[scores={ls_death=1.., ls_health=0.., lives=2}] run scoreboard players remove @p lives 1
@@ -144,6 +148,7 @@ execute if score @p lives = 0 lives run team join Dead
 execute as @a[tag=dead] run title @p title {"text":"You ran out of hearts!","bold":true,"color":"red"}
 execute as @a[tag=dead] run tag @p remove dead
 
+execute as @a[scores={ls_death=1..},tag=!boogey_victim, tag=!first_death] run scoreboard players remove @s ls_health 4
 
 # Updates the player health bar
 #execute as @a run function lifesteal:health_check
