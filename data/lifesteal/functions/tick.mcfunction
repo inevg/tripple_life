@@ -98,6 +98,8 @@ execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_health 1 
 #function lifesteal:linked/link_tick
 
 
+execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players set @p ls_health 10
 
 execute if score @p lives = 3 lives run team join Green
 execute if score @p lives = 2 lives run team join Yellow
@@ -106,8 +108,6 @@ execute if score @p lives = 0 lives run team join Dead
 
 #--------------------------------------------------------------------------------------------------------------------------------
 #execute if score @s ls_health matches ..0 run gamemode spectator @s
-execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players set @p ls_health 10
 #execute as @a[scores={ls_death=1.., ls_health=0.., lives=3}] run scoreboard players remove @p lives 1
 #execute as @a[scores={ls_death=1.., ls_health=-2.., lives=3}] run scoreboard players remove @p lives 1
 #execute as @a[scores={ls_death=1.., ls_health=-4.., lives=3}] run scoreboard players remove @p lives 1
