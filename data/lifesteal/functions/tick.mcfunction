@@ -29,21 +29,18 @@ execute as @a[scores={ls_death=1..},tag=!boogey_victim, tag=!first_death] run sc
 #function lifesteal:boogey/boogey_tick
 execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run scoreboard players add @s ls_health 4
 execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run tag @a add boogey_victim
-execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run tag @a remove boogeyman
-execute as @a[scores={ls_killedPlayer=1..}] run effect give @p resistance 1 4
+execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run tag @p remove boogeyman
+execute as @a[scores={ls_killedPlayer=1..}] run effect give @p resistance 5 4
 execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_damage 1 0
 execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_health 1 0
 
 
-execute as @a[scores={ls_death=1..},tag=boogey_victim,team=Yellow] run tag @s add yellow_to_red
-execute as @a[tag=yellow_to_red] run scoreboard players set @s ls_health 10
-execute as @a[tag=yellow_to_red] run team join Red
-execute as @a[tag=yellow_to_red] run tag @a remove yellow_to_red
+execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1..},tag=boogey_victim] unless score @p ls_health > 10 ls_health run scoreboard players set @s ls_health 10
+execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players remove @p ls_death 1
+
 #--------------------------------------------------------------------------------------------------------------------------------
-execute as @a[scores={ls_death=1..},tag=boogey_victim,team=Green] run tag @s add green_to_yellow
-execute as @a[tag=green_to_yellow] run scoreboard players set @s ls_health 10
-execute as @a[tag=green_to_yellow] run team join Yellow
-execute as @a[tag=green_to_yellow] run tag @a remove green_to_yellow
+
 
 tag @a remove boogey_victim
 
@@ -109,38 +106,40 @@ execute if score @p lives = 0 lives run team join Dead
 
 #--------------------------------------------------------------------------------------------------------------------------------
 #execute if score @s ls_health matches ..0 run gamemode spectator @s
-execute as @a[scores={ls_death=1.., ls_health=0.., lives=3}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=-2.., lives=3}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=-4.., lives=3}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=-6.., lives=3}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=0.., lives=2}] run scoreboard players set @p ls_health 10
-execute as @a[scores={ls_death=1.., ls_health=-2.., lives=2}] run scoreboard players set @p ls_health 10
-execute as @a[scores={ls_death=1.., ls_health=-4.., lives=2}] run scoreboard players set @p ls_health 10
-execute as @a[scores={ls_death=1.., ls_health=-6.., lives=2}] run scoreboard players set @p ls_health 10
+execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players remove @p lives 1
+execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=0.., lives=3}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=-2.., lives=3}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=-4.., lives=3}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=-6.., lives=3}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=0.., lives=2}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=-2.., lives=2}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=-4.., lives=2}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=-6.., lives=2}] run scoreboard players set @p ls_health 10
 
 #--------------------------------------------------------------------------------------------------------------------------------
-execute as @a[scores={ls_death=1.., ls_health=0.., lives=2}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=-2.., lives=2}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=-4.., lives=2}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=-6.., lives=2}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=0.., lives=1}] run scoreboard players set @p ls_health 10
-execute as @a[scores={ls_death=1.., ls_health=-2.., lives=1}] run scoreboard players set @p ls_health 10
-execute as @a[scores={ls_death=1.., ls_health=-4.., lives=1}] run scoreboard players set @p ls_health 10
-execute as @a[scores={ls_death=1.., ls_health=-6.., lives=1}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=0.., lives=2}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=-2.., lives=2}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=-4.., lives=2}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=-6.., lives=2}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=0.., lives=1}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=-2.., lives=1}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=-4.., lives=1}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=-6.., lives=1}] run scoreboard players set @p ls_health 10
 
 #--------------------------------------------------------------------------------------------------------------------------------
-execute as @a[scores={ls_death=1.., ls_health=0.., lives=1}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=-2.., lives=1}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=-4.., lives=1}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=-6.., lives=1}] run scoreboard players remove @p lives 1
-execute as @a[scores={ls_death=1.., ls_health=0.., lives=0}] run tag @p add dead
-execute as @a[scores={ls_death=1.., ls_health=-2.., lives=0}] run tag @p add dead
-execute as @a[scores={ls_death=1.., ls_health=-4.., lives=0}] run tag @p add dead
-execute as @a[scores={ls_death=1.., ls_health=-6.., lives=0}] run tag @p add dead
-execute as @a[scores={ls_death=1.., ls_health=0.., lives=0}] run scoreboard players set @p ls_health 10
-execute as @a[scores={ls_death=1.., ls_health=-2.., lives=0}] run scoreboard players set @p ls_health 10
-execute as @a[scores={ls_death=1.., ls_health=-4.., lives=0}] run scoreboard players set @p ls_health 10
-execute as @a[scores={ls_death=1.., ls_health=-6.., lives=0}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=0.., lives=1}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=-2.., lives=1}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=-4.., lives=1}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=-6.., lives=1}] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1.., ls_health=0.., lives=0}] run tag @p add dead
+#execute as @a[scores={ls_death=1.., ls_health=-2.., lives=0}] run tag @p add dead
+#execute as @a[scores={ls_death=1.., ls_health=-4.., lives=0}] run tag @p add dead
+#execute as @a[scores={ls_death=1.., ls_health=-6.., lives=0}] run tag @p add dead
+#execute as @a[scores={ls_death=1.., ls_health=0.., lives=0}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=-2.., lives=0}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=-4.., lives=0}] run scoreboard players set @p ls_health 10
+#execute as @a[scores={ls_death=1.., ls_health=-6.., lives=0}] run scoreboard players set @p ls_health 10
 
 execute as @a[tag=dead] run title @p title {"text":"You ran out of hearts!","bold":true,"color":"red"}
 execute as @a[tag=dead] run tag @p remove dead
