@@ -39,10 +39,10 @@ execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players re
 execute as @a[scores={ls_death=1..},tag=boogey_victim] unless score @p ls_health > 10 ls_health run scoreboard players set @s ls_health 10
 execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players remove @p ls_death 1
 
+tag @a remove boogey_victim
 #--------------------------------------------------------------------------------------------------------------------------------
 
 
-tag @a remove boogey_victim
 
 
 function lifesteal:deathswap/deathswap_tick
@@ -95,7 +95,7 @@ execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_health 1 
 
 
 
-#function lifesteal:linked/link_tick
+function lifesteal:linked/link_tick
 
 
 execute as @a[scores={ls_death=1..}] unless score @p ls_health > 0 ls_health run scoreboard players remove @p lives 1
