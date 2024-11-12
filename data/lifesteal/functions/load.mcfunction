@@ -31,11 +31,6 @@ forceload add 0 0
 
 gamerule keepInventory true
 
-scoreboard objectives add deathswap dummy
 #scoreboard objectives add gladiator dummy
-scoreboard objectives add gladiator dummy
-scoreboard objectives add gladiator_match dummy
-scoreboard objectives add gladiator_score dummy
-scoreboard objectives add mlg_score dummy
-scoreboard objectives add soul dummy
+
 scoreboard objectives add health health

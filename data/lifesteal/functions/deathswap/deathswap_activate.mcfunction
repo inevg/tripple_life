@@ -1,4 +1,6 @@
 #function lifesteal:deathswap/deathswap_select
+scoreboard objectives add deathswap dummy
+
 scoreboard players set @a deathswap 0
 
 tag @a remove ds1

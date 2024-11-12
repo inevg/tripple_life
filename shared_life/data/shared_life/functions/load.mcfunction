@@ -1,0 +1,1 @@
+function shared_life:setup

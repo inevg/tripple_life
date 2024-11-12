@@ -1,0 +1,28 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "criteria": {
+        "damaged": {
+            "trigger": "minecraft:entity_hurt_player",
+            "conditions": {
+                "damage": {
+                    "dealt": {
+                        "min": 0,
+                        "max": 99999
+                    },
+                    "taken": {
+                        "min": 0,
+                        "max": 99999
+                    }
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "damaged"
+        ]
+    ],
+    "rewards": {
+        "function": "shared_life:detect_damage"
+    }
+}

@@ -1,3 +1,5 @@
+scoreboard objectives add mlg_score dummy
+
 tag @r add mlg
 tag @r add mlg
 tag @a[tag=mlg] add mlg_pr1

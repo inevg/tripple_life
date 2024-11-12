@@ -1,3 +1,7 @@
+scoreboard objectives add gladiator dummy
+scoreboard objectives add gladiator_match dummy
+scoreboard objectives add gladiator_score dummy
+
 tag @r[scores={lives = 2},tag=!glad] add glad
 tag @r[scores={lives = 2},tag=!glad] add glad
 tag @r[scores={lives = 2},tag=!glad] add glad
