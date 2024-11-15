@@ -29,12 +29,13 @@ function lifesteal:health_check
 execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run scoreboard players add @s ls_health 4
 execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run tag @a add boogey_victim
 execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run tag @p remove boogeyman
-execute as @a[scores={ls_killedPlayer=1..}] run effect give @p resistance 5 4
+execute as @a[scores={ls_killedPlayer=1..}] run effect give @p resistance 2 4
 execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_damage 1 0
 execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_health 1 0
 
 
-execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players remove @p lives 1
+#execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players remove @s ls_health 8
+execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players remove @s lives 1
 execute as @a[scores={ls_death=1..},tag=boogey_victim] unless score @p ls_health > 10 ls_health run scoreboard players set @s ls_health 10
 execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players remove @p ls_death 1
 
@@ -122,11 +123,12 @@ execute as @a[scores={lives=0}] run team join Dead
 #execute as @a[scores={ls_death=1..}] unless score @s ls_health > 1 ls_health run scoreboard players remove @s lives 1
 #execute as @a[scores={ls_death=1..}] unless score @s ls_health > 1 ls_health run scoreboard players set @s ls_health 10
 execute as @a[scores={ls_health=..0, ls_death=1..}] run scoreboard players remove @s lives 1
-tag @a[scores={ls_health=..0, ls_death=1..,lives=0}] add dead
+tag @a[scores={ls_death=1..,lives=0}] add dead
 execute as @a[scores={ls_health=..0, ls_death=1..}] if score @s lives matches 1.. run scoreboard players set @s ls_health 10
 #--------------------------------------------------------------------------------------------------------------------------------
 
 execute as @a[tag=dead] run title @p title {"text":"You ran out of hearts!","bold":true,"color":"red"}
+gamemode spectator @a[tag=dead]
 execute as @a[tag=dead] run tag @p remove dead
 
 
@@ -143,3 +145,5 @@ scoreboard players set @a ls_killedPlayer 0
 scoreboard players set @a ls_death 0
 #scoreboard players set @a ls_leave 0
 function lifesteal:health_check
+
+

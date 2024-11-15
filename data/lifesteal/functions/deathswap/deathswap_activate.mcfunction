@@ -8,7 +8,7 @@ tag @a remove ds2
 
 
 tag @r add ds1
-tag @r add ds2
+tag @r[tag=!ds1] add ds2
 scoreboard players set @a[tag=ds1] deathswap 1
 scoreboard players set @a[tag=ds2] deathswap 1
 
