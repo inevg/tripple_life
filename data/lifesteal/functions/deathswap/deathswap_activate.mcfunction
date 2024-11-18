@@ -6,9 +6,10 @@ scoreboard players set @a deathswap 0
 tag @a remove ds1
 tag @a remove ds2
 
-
-tag @r add ds1
-tag @r[tag=!ds1] add ds2
+tag @r[tag=!ds_participant] add ds1
+tag @r[tag=!ds_participant, tag=!ds1] add ds2
+tag @a[tag=ds1] add ds_participant
+tag @a[tag=ds2] add ds_participant
 scoreboard players set @a[tag=ds1] deathswap 1
 scoreboard players set @a[tag=ds2] deathswap 1
 

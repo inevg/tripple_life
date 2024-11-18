@@ -98,7 +98,7 @@ execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_health 1 
 function lifesteal:linked/link_tick
 
 
-
+execute as @a[scores={lives=4..}] run team join DG
 execute as @a[scores={lives=3}] run team join Green
 execute as @a[scores={lives=2}] run team join Yellow
 execute as @a[scores={lives=1}] run team join Red

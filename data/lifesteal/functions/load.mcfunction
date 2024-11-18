@@ -17,6 +17,8 @@ scoreboard objectives add ls_tick dummy
 scoreboard objectives add ls_global_settings dummy
 scoreboard objectives add lives dummy
 
+team add DG
+team modify DG color dark_green
 team add Green
 team modify Green color green
 team add Yellow
@@ -26,7 +28,7 @@ team modify Red color red
 team add Dead
 team modify Dead color gray
 
-scoreboard players set @a lives 3
+scoreboard players set @a lives 4
 
 forceload add 0 0
 
