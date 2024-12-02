@@ -22,7 +22,7 @@ execute as @a if score @s ls_health matches 6 run attribute @s generic.max_healt
 execute as @a if score @s ls_health matches 8 run attribute @s generic.max_health base set 16
 execute as @a if score @s ls_health matches 10 run attribute @s generic.max_health base set 20
 execute as @a if score @s ls_health matches 12 run attribute @s generic.max_health base set 24
-execute as @a if score @s ls_health matches 14 run attribute @s generic.max_health base set 28
+execute as @a if score @s ls_health matches 14.. run attribute @s generic.max_health base set 28
 execute as @a if score @s ls_health matches 16 run scoreboard players set @s ls_health 14
 
 

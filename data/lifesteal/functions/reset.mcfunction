@@ -14,6 +14,8 @@ scoreboard objectives remove ls_death
 scoreboard objectives remove ls_tick
 #scoreboard objectives remove ls_ban_tick
 #scoreboard objectives remove ls_banned
+scoreboard players set @a lives 4
+
 function lifesteal:load
 scoreboard players set ban_on_death ls_global_settings 0
 #clear @a minecraft:nether_star{Heart:1b} 9999

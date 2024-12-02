@@ -28,7 +28,6 @@ team modify Red color red
 team add Dead
 team modify Dead color gray
 
-scoreboard players set @a lives 4
 
 forceload add 0 0
 

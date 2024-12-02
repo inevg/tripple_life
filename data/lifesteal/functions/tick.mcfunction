@@ -26,9 +26,9 @@ function lifesteal:health_check
 
 
 #function lifesteal:boogey/boogey_tick
-execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run scoreboard players add @s ls_health 4
+execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run scoreboard players add @s ls_health 2
 execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run tag @a add boogey_victim
-execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run tag @p remove boogeyman
+execute as @a[scores={ls_killedPlayer=1..,}, tag=boogeyman] run tag @s remove boogeyman
 execute as @a[scores={ls_killedPlayer=1..}] run effect give @p resistance 2 4
 execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_damage 1 0
 execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_health 1 0
@@ -36,8 +36,8 @@ execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_health 1 
 
 #execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players remove @s ls_health 8
 execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players remove @s lives 1
-execute as @a[scores={ls_death=1..},tag=boogey_victim] unless score @p ls_health > 10 ls_health run scoreboard players set @s ls_health 10
-execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players remove @p ls_death 1
+execute as @a[scores={ls_death=1..},tag=boogey_victim] unless score @s ls_health > 10 ls_health run scoreboard players set @s ls_health 10
+execute as @a[scores={ls_death=1..},tag=boogey_victim] run scoreboard players set @s ls_death 0
 
 tag @a remove boogey_victim
 #--------------------------------------------------------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ function lifesteal:mlg/mlg_tick
 
 execute as @a[scores={ls_death=1..}] run scoreboard players remove @s ls_health 4
 #check kill
-execute as @a[scores={ls_killedPlayer=1..},tag=!glad,tag=!boogeyman] run scoreboard players add @s ls_health 2
+execute as @a[scores={ls_killedPlayer=1..}] run scoreboard players add @s ls_health 2
 execute as @a[scores={ls_killedPlayer=1..}] run effect give @p resistance 1 4
 execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_damage 1 0
 execute as @a[scores={ls_killedPlayer=1..}] run effect give @p instant_health 1 0
@@ -129,7 +129,7 @@ execute as @a[scores={ls_health=..0, ls_death=1..}] if score @s lives matches 1.
 
 execute as @a[tag=dead] run title @p title {"text":"You ran out of hearts!","bold":true,"color":"red"}
 gamemode spectator @a[tag=dead]
-execute as @a[tag=dead] run tag @p remove dead
+execute as @a[tag=dead] run tag @s remove dead
 
 
 # Updates the player health bar
