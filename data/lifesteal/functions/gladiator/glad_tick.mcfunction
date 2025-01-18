@@ -3,7 +3,11 @@ execute as @a[scores={ls_death=1..},tag=glad] run tellraw @a {"text": "A gladiat
 execute as @a[scores={ls_death=1..},tag=glad] run scoreboard players add @a[tag=glad] gladiator_score 1
 execute as @a[scores={ls_death=1..},tag=glad] run scoreboard players set @s gladiator 0
 execute as @a[scores={ls_death=1..},tag=glad] run scoreboard players set @s gladiator_score 0
+execute as @a[scores={ls_death=1..},tag=glad] run scoreboard players remove @s lives 1
+execute as @a[scores={ls_death=1..},tag=glad] run tag @s add glad_dead
 execute as @a[scores={ls_death=1..},tag=glad] run tag @s remove glad
+execute as @a[scores={ls_death=1..},tag=glad_dead] run scoreboard players set @s ls_death 0
+tag @a[tag=glad_dead] remove glad_dead
 
 #execute if score @p gladiator_score = @p gladiator_match run tag @p add glad_win
 execute if score @s gladiator_score = 4 gladiator_score run tag @s add glad_win
